@@ -197,3 +197,7 @@ For production deployment:
 8. Enable HTTPS
 9. Set up proper logging
 10. Add monitoring (Sentry, LogRocket)
+=======
+# ShopNow
+Full-stack e-commerce platform built with the MERN stack (MongoDB, Express, React, Node.js) featuring product listings, shopping cart, and checkout functionality.
+>>>>>>> 454150108e1fedaf7d163f7878de54b061484240

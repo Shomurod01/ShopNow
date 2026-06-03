@@ -89,7 +89,7 @@ const Profile = () => {
               </div>
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">Phone</label>
-                <input {...register('phone')} className="input-field" placeholder="+1 555 000 0000" />
+                <input {...register('phone')} className="input-field" placeholder="+48 500 000 000" />
               </div>
             </div>
           </div>
@@ -99,21 +99,21 @@ const Profile = () => {
             <div className="space-y-3">
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">Street Address</label>
-                <input {...register('street')} className="input-field" placeholder="123 Main St" />
+                <input {...register('street')} className="input-field" placeholder="ul. Marszałkowska 1" />
               </div>
               <div className="grid grid-cols-2 gap-4">
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-1">City</label>
-                  <input {...register('city')} className="input-field" placeholder="New York" />
+                  <input {...register('city')} className="input-field" placeholder="Warszawa" />
                 </div>
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-1">Postal Code</label>
-                  <input {...register('postalCode')} className="input-field" placeholder="10001" />
+                  <input {...register('postalCode')} className="input-field" placeholder="00-001" />
                 </div>
               </div>
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">Country</label>
-                <input {...register('country')} className="input-field" placeholder="United States" />
+                <input {...register('country')} className="input-field" placeholder="Poland" />
               </div>
             </div>
           </div>

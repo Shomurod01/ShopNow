@@ -28,7 +28,7 @@ const AdminDashboard = () => {
     { label: 'Total Products', value: data?.stats.totalProducts, bg: 'bg-blue-50', text: 'text-blue-700', link: '/admin/products' },
      { label: 'Total Orders',   value: data?.stats.totalOrders, bg: 'bg-purple-50', text: 'text-purple-700', link: '/admin/orders' },
        { label: 'Total Customers',value: data?.stats.totalUsers, bg: 'bg-green-50',  text: 'text-green-700',  link: '#' },
-    { label: 'Total Revenue',  value: `${(data?.stats.totalRevenue || 0).toFixed(2)} zł`, icon: '💰', bg: 'bg-yellow-50', text: 'text-yellow-700', link: '#' },
+    { label: 'Total Revenue',  value: `${(data?.stats.totalRevenue || 0).toFixed(2)} zł`, bg: 'bg-yellow-50', text: 'text-yellow-700', link: '#' },
   ];
 
   return (
@@ -38,7 +38,7 @@ const AdminDashboard = () => {
           <h1 className="text-2xl font-bold text-gray-900">Admin Dashboard</h1>
           <p className="text-gray-500 text-sm mt-0.5">Welcome back! Here's what's happening.</p>
         </div>
-        <span className="text-xs bg-purple-100 text-purple-700 font-semibold px-3 py-1.5 rounded-full">⚙️ Admin Mode</span>
+        <span className="text-xs bg-purple-100 text-purple-700 font-semibold px-3 py-1.5 rounded-full">Admin Mode</span>
       </div>
 
       {/* Stat cards */}
@@ -46,7 +46,7 @@ const AdminDashboard = () => {
         {cards.map((card) => (
           <Link key={card.label} to={card.link}
             className={`${card.bg} card p-5 hover:shadow-md transition-shadow`}>
-            <div className="text-3xl mb-3">{card.icon}</div>
+            <div className="text-3xl mb-3"></div>
             <p className={`text-2xl font-extrabold ${card.text}`}>{card.value}</p>
             <p className="text-sm text-gray-600 mt-1 font-medium">{card.label}</p>
           </Link>

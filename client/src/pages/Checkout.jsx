@@ -162,34 +162,34 @@ const Checkout = () => {
               <form onSubmit={handleSubmit(onShipping)} className="space-y-4">
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-1">Full Name *</label>
-                  <input {...register('fullName', { required: 'Full name is required' })} className="input-field" placeholder="John Doe" />
+                  <input {...register('fullName', { required: 'Full name is required' })} className="input-field" placeholder="Jan Kowalski" />
                   {errors.fullName && <p className="text-red-500 text-xs mt-1">{errors.fullName.message}</p>}
                 </div>
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-1">Street Address *</label>
-                  <input {...register('street', { required: 'Street is required' })} className="input-field" placeholder="123 Main St" />
+                  <input {...register('street', { required: 'Street is required' })} className="input-field" placeholder="ul. Marszałkowska 1" />
                   {errors.street && <p className="text-red-500 text-xs mt-1">{errors.street.message}</p>}
                 </div>
                 <div className="grid grid-cols-2 gap-4">
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-1">City *</label>
-                    <input {...register('city', { required: 'City is required' })} className="input-field" placeholder="New York" />
+                    <input {...register('city', { required: 'City is required' })} className="input-field" placeholder="Warszawa" />
                     {errors.city && <p className="text-red-500 text-xs mt-1">{errors.city.message}</p>}
                   </div>
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-1">Postal Code *</label>
-                    <input {...register('postalCode', { required: 'Postal code is required' })} className="input-field" placeholder="10001" />
+                    <input {...register('postalCode', { required: 'Postal code is required' })} className="input-field" placeholder="00-001" />
                     {errors.postalCode && <p className="text-red-500 text-xs mt-1">{errors.postalCode.message}</p>}
                   </div>
                 </div>
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-1">Country *</label>
-                  <input {...register('country', { required: 'Country is required' })} defaultValue="United States" className="input-field" />
+                  <input {...register('country', { required: 'Country is required' })} defaultValue="Poland" className="input-field" />
                   {errors.country && <p className="text-red-500 text-xs mt-1">{errors.country.message}</p>}
                 </div>
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-1">Phone</label>
-                  <input {...register('phone')} className="input-field" placeholder="+1 555 000 0000" />
+                  <input {...register('phone')} className="input-field" placeholder="+48 500 000 000" />
                 </div>
                 <button type="submit" disabled={loadingIntent} className="btn-primary w-full py-3 text-base">
                   {loadingIntent ? 'Preparing…' : 'Continue to Payment →'}

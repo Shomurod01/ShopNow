@@ -69,12 +69,6 @@ const Login = () => {
             </button>
           </form>
 
-          <div className="mt-5 p-4 bg-gray-50 rounded-xl text-xs text-gray-500 space-y-1">
-            <p className="font-semibold text-gray-600">Demo accounts:</p>
-            <p> Admin: <code>admin@example.com</code> / <code>admin123</code></p>
-            <p> User: <code>user@example.com</code> / <code>user123</code></p>
-          </div>
-
           <p className="text-center text-sm text-gray-600 mt-5">
             Don't have an account?{' '}
             <Link to="/register" className="text-blue-600 hover:underline font-semibold">Create one →</Link>

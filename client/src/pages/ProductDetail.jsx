@@ -6,15 +6,16 @@ import { useAuth } from '../context/AuthContext'
 import { useWishlist } from '../context/WishlistContext'
 import LoadingSpinner from '../components/LoadingSpinner'
 import toast from 'react-hot-toast'
+import { HeartIcon, StarIcon } from '../components/Icons'
 
 const Stars = ({ rating, interactive = false, onRate }) => (
   <div className="flex gap-1">
     {[1, 2, 3, 4, 5].map((s) => (
-      <svg key={s} onClick={() => interactive && onRate && onRate(s)}
+      <StarIcon 
+        key={s} 
+        onClick={() => interactive && onRate && onRate(s)}
         className={`h-5 w-5 ${s <= Math.round(rating) ? 'text-yellow-400' : 'text-gray-200'} ${interactive ? 'cursor-pointer hover:text-yellow-400 transition-colors' : ''}`}
-        fill="currentColor" viewBox="0 0 20 20">
-        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-      </svg>
+      />
     ))}
   </div>
 )
@@ -22,6 +23,7 @@ const Stars = ({ rating, interactive = false, onRate }) => (
 const ProductDetail = () => {
   const { id } = useParams()
   const navigate = useNavigate()
+  
   const [product, setProduct] = useState(null)
   const [loading, setLoading] = useState(true)
   const [qty, setQty] = useState(1)
@@ -29,6 +31,7 @@ const ProductDetail = () => {
   const [reviewRating, setReviewRating] = useState(5)
   const [reviewComment, setReviewComment] = useState('')
   const [submitting, setSubmitting] = useState(false)
+  
   const { addToCart } = useCart()
   const { user } = useAuth()
   const { isInWishlist, addToWishlist, removeFromWishlist } = useWishlist()
@@ -45,7 +48,9 @@ const ProductDetail = () => {
     }
   }
 
-  useEffect(() => { fetchProduct() }, [id])
+  useEffect(() => { 
+    fetchProduct() 
+  }, [id])
 
   const handleAddToCart = () => {
     if (!user) {
@@ -97,15 +102,21 @@ const ProductDetail = () => {
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
         <div>
           <div className="h-96 bg-gray-100 rounded-2xl overflow-hidden shadow-sm">
-            <img src={imgUrl} alt={product.name}
+            <img 
+              src={imgUrl} 
+              alt={product.name}
               className="w-full h-full object-cover"
-              onError={(e) => { e.target.src = 'https://via.placeholder.com/500?text=No+Image' }} />
+              onError={(e) => { e.target.src = 'https://via.placeholder.com/500?text=No+Image' }} 
+            />
           </div>
           {product.images.length > 1 && (
             <div className="flex gap-2 mt-3">
               {product.images.map((img, i) => (
-                <button key={i} onClick={() => setSelImg(i)}
-                  className={`h-16 w-16 rounded-xl overflow-hidden border-2 transition-colors ${i === selImg ? 'border-blue-600' : 'border-transparent hover:border-gray-300'}`}>
+                <button 
+                  key={i} 
+                  onClick={() => setSelImg(i)}
+                  className={`h-16 w-16 rounded-xl overflow-hidden border-2 transition-colors ${i === selImg ? 'border-blue-600' : 'border-transparent hover:border-gray-300'}`}
+                >
                   <img src={img.url} alt={img.alt} className="w-full h-full object-cover" />
                 </button>
               ))}
@@ -138,21 +149,20 @@ const ProductDetail = () => {
             {product.stock > 0 && (
               <>
                 <div className="flex items-center border border-gray-300 rounded-xl overflow-hidden">
-                  <button onClick={() => setQty(Math.max(1, qty - 1))}
-                    className="px-4 py-3 bg-gray-50 hover:bg-gray-100 text-gray-700 font-bold transition-colors">−</button>
+                  <button onClick={() => setQty(Math.max(1, qty - 1))} className="px-4 py-3 bg-gray-50 hover:bg-gray-100 text-gray-700 font-bold transition-colors">−</button>
                   <span className="px-5 py-3 font-semibold text-gray-900">{qty}</span>
-                  <button onClick={() => setQty(Math.min(product.stock, qty + 1))}
-                    className="px-4 py-3 bg-gray-50 hover:bg-gray-100 text-gray-700 font-bold transition-colors">+</button>
+                  <button onClick={() => setQty(Math.min(product.stock, qty + 1))} className="px-4 py-3 bg-gray-50 hover:bg-gray-100 text-gray-700 font-bold transition-colors">+</button>
                 </div>
                 <button onClick={handleAddToCart} className="flex-1 btn-primary py-3 text-base">
                   Add to Cart
                 </button>
               </>
             )}
-            <button onClick={toggleWishlist} className={`h-12 w-12 rounded-xl border flex items-center justify-center transition-colors ${isWishlisted ? 'border-red-500 bg-red-50 text-red-500' : 'border-gray-300 bg-white text-gray-400 hover:bg-gray-50 hover:text-gray-600'}`}>
-              <svg className={`h-6 w-6 ${isWishlisted ? 'fill-current' : ''}`} viewBox="0 0 24 24" fill={isWishlisted ? "currentColor" : "none"} stroke="currentColor" strokeWidth="2">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
-              </svg>
+            <button 
+              onClick={toggleWishlist} 
+              className={`h-12 w-12 rounded-xl border flex items-center justify-center transition-colors ${isWishlisted ? 'border-red-500 bg-red-50 text-red-500' : 'border-gray-300 bg-white text-gray-400 hover:bg-gray-50 hover:text-gray-600'}`}
+            >
+              <HeartIcon className={`h-6 w-6 ${isWishlisted ? 'fill-current' : ''}`} filled={isWishlisted} />
             </button>
           </div>
 
@@ -203,8 +213,13 @@ const ProductDetail = () => {
               </div>
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">Comment (optional)</label>
-                <textarea value={reviewComment} onChange={(e) => setReviewComment(e.target.value)}
-                  placeholder="Share your experience…" rows={3} className="input-field" />
+                <textarea 
+                  value={reviewComment} 
+                  onChange={(e) => setReviewComment(e.target.value)}
+                  placeholder="Share your experience…" 
+                  rows={3} 
+                  className="input-field" 
+                />
               </div>
               <button type="submit" disabled={submitting} className="btn-primary px-6 py-2">
                 {submitting ? 'Submitting…' : 'Submit Review'}
