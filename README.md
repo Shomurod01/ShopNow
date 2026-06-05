@@ -42,7 +42,6 @@ A complete MERN stack e-commerce platform with Stripe payments, JWT authenticati
 
 - Node.js >= 18
 - MongoDB (local)
-- Stripe account (for test keys)
 
 ### Setup Steps
 
@@ -109,10 +108,7 @@ npm run dev
 1. **Login** with demo accounts
 2. **Browse products** at `/products`
 3. **Add to cart** and checkout
-4. **Test payment** with Stripe test card:
-   - Card: `4242 4242 4242 4242`
-   - Expiry: Any future date (e.g., 12/34)
-   - CVC: Any 3 digits (e.g., 123)
+4. **Test payment** with Stripe
 5. **Admin panel** at `/admin` (login as admin)
 
 ## Security Features
